@@ -1,6 +1,9 @@
 library(feather)
 library(reshape2)
 
+# specify path
+new_path
+
 probs = seq(1/52, 51/52, 1/52)
 probs_order = c(probs[26], probs[1:25], probs[27:51])
 
@@ -8,7 +11,7 @@ for (n in 0:20) {
   
   print(n)
   
-  path = paste0("/Data/eumetnet/eumetnet_temp/new/orog_pred_leadtime", n, ".csv")
+  path = paste0(new_path, "pred_leadtime", n, ".csv")
   preds = read.csv(path, header = T)
   
   pred_ens = as.data.frame(matrix(NA, nrow = nrow(preds), ncol = 51))
@@ -27,7 +30,7 @@ for (n in 0:20) {
                     variable.name = "realization", 
                     value.name = "t2m")
   
-  path_new = paste0("/Data/eumetnet/eumetnet_temp/new/orog_fcst_leadtime", n, ".feather")
-  write_feather(pred_final, path_new)
+  new_path0 = paste0(new_path, "fcst_leadtime", n, ".feather")
+  write_feather(pred_final, new_path0)
   
 }
