@@ -25,8 +25,8 @@ The DRN approach proposed by Rasp and Lerch (2018)[^fn1] is a neural network (NN
 |Predictor for embedding| Description|
 |-------------|---------------|
 |station_id| Identification number of weather stations in the dataset|
-|model_land_usage| Land usage of the model grid point|
-|station_land_usage| Land usage of the weather station|
+|*model_land_usage*| Land usage of the model grid point|
+|*station_land_usage*| Land usage of the weather station|
 |**land_usage**| Summarized land usage information combining both *model_land_usage* and *station_land_usage*, using a mapping from the 2D vector (*model_land_usage*, *station_land_usage*) to the 1D scalar *land_usage*|
 
 Our NN model is built upon the Keras[^fn2] framework in Python, and the detailed hyper-parameter choices are described as follows:
@@ -64,7 +64,7 @@ The DRN approach could be done by running the `DRN_pp.py` script in the home dir
 
 The output of NN models are the parameters of a Gaussian distribution, and we further run the  `get_predictions.R` script to generate 51 equi-quantile samples from the distribution as the post-processed ensemble forecasts.
 
-**CHECK** The output ensemble forecasts are in the feather format, and need to be further transformed back to the netCDF format using ...
+**CHECK:** The output ensemble forecasts are in the feather format, and need to be further transformed back to the netCDF format using ...
 
 # Computational performance indication
 
