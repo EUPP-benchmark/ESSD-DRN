@@ -7,7 +7,7 @@ The code is provided as supplementary material with
 
 # Details on the method
 
-The DRN approach proposed by Rasp and Lerch (2018)[^fn1] is a neural network (NN) based method where the distribution parameters of the post-processed probabilistic forecasts are obtained as the output of the NN model. Our implementation for the EUPPBench closely follow Rasp and Lerch (2018)[^fn1] and use a NN with one hidden layer of 512 nodes. The input predictors of our NN model are listed in the following table, and all predictors except for the date information and the embedding are normalized to the range [0,1] using a min-max scalar before training. We assume a Guassian distribution for the post-processing temperature forecasts, and the NN model returns the mean and standard deviation of the distribution as outputs.
+The DRN approach proposed by Rasp and Lerch (2018)[^fn1] is a neural network (NN) based method where the distribution parameters of the post-processed probabilistic forecasts are obtained as the output of the NN model. Our implementation for the EUPPBench closely follow Rasp and Lerch (2018)[^fn1] and use a NN with one hidden layer of 512 nodes. The input predictors of our NN model are listed in the following table, and all predictors except for the date information and the embedding are normalized to the range [0,1] using a min-max scalar before training. We assume a Guassian distribution for the post-processing temperature forecasts, and the NN model returns the mean and standard deviation of the distribution as outputs. For each lead time, a single NN model is estimated jointly for all stations, using the CRPSS as a custom loss function. The model predictions are made locally adaptive by the use of embeddings of both the station identifiers and the summarized land usage information. 
 
 |Predictor| Description|
 |-------------|---------------|
@@ -27,11 +27,21 @@ The DRN approach proposed by Rasp and Lerch (2018)[^fn1] is a neural network (NN
 |station_id| Identification number of weather stations in the dataset|
 |model_land_usage| Land usage of the model grid point|
 |station_land_usage| Land usage of the weather station|
-|**land_usage**| Combination of *model_land_usage* and *station_land_usage*, using a mapping from the 2D vector (*model_land_usage*, *station_land_usage*) to the 1D scalar *land_usage*|
+|**land_usage**| Summarized land usage information combining both *model_land_usage* and *station_land_usage*, using a mapping from the 2D vector (*model_land_usage*, *station_land_usage*) to the 1D scalar *land_usage*|
 
+Our NN model is built upon the Keras[^fn2] framework in Python, and the detailed hyper-parameter choices are described as follows:
+
+|Hyper-parameter of the NN model| Value|
+|-------------|---------------|
+|Embedding size of the *station_id*| 2|
+|Embedding size of the *land_usage*| 4|
+|Learning rate| 0.005|
+|Batch size| 4096|
+|Early stopping| 
+|Maximum number of training epochs| 50|
 
 [^fn1]: Rasp, S., and Lerch, S. (2018). Neural Networks for Postprocessing Ensemble Weather Forecasts. *Monthly Weather Review* 146, 11, 3885-3900, available from: <https://doi.org/10.1175/MWR-D-18-0187.1> [Accessed 19 December 2022]
-
+[^fn2]: <https://keras.io/>
 
 # Data and usage
 
