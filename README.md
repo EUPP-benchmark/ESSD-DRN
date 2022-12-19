@@ -46,10 +46,27 @@ Our NN model is built upon the Keras[^fn2] framework in Python, and the detailed
 
 # Data and usage
 
+The scripts are build for the ESSD benchmark dataset, which could be downloaded following the instructions on the [GitHub repository](https://github.com/EUPP-benchmark/ESSD-benchmark-datasets).
+
 ## Pre-processing data
+
+The original ESSD benchmark dataset is in the NetCDF format, and we need to further pre-process it into the format that fit our DRN scripts.
+
+**TO BE ADDED:** The part for trainsforming NetCDF format into feather format
+
+The transformed feather file includes forecast information for all 21 lead times, and we need to further split them regarding different lead time for the model training. The `data_preprocess.py` script in the `data-preprocess` folder includes the codes for implementation.
 
 ## Implementing DRN
 
+The DRN approach could be done by running the `DRN_pp.py` script in the home directory, note that the corresponding path of files need to be changed accordingly.
+
 ## Obtaining predictions
 
+The output of NN models are the parameters of a Gaussian distribution, and we further run the  `get_predictions.R` script to generate 51 equi-quantile samples from the distribution as the post-processed ensemble forecasts.
+
+**CHECK** The output ensemble forecasts are in the feather format, and need to be further transformed back to the netCDF format using ...
+
 # Computational performance indication
+
+The computation was done with 40 CPUs (Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz) with 236 Gb of RAM. Training 21 NN models for different lead times takes approximately 2 hours in total.
+
