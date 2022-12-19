@@ -62,7 +62,7 @@ The DRN approach could be done by running the `DRN_pp.py` script in the home dir
 
 ## Obtaining predictions
 
-The output of NN models are the parameters of a Gaussian distribution, and we further run the  `get_predictions.R` script to generate 51 equi-quantile samples from the distribution as the post-processed ensemble forecasts.
+The output of NN models are the parameters of a Gaussian distribution, and we further run the scripts in the `output-process` folder to get final predictions in the required format. Firstly, `output_proess.py` script is run to get a better format for the following procedure; Next, `generate_fcst.R` script is run to generate 51 equi-quantile samples from the distribution as the post-processed ensemble forecasts for different lead time; And finally, `combine_fcst.R` script is run to combine the post-processed forecasts for all lead times.
 
 **CHECK:** The output ensemble forecasts are in the feather format, and need to be further transformed back to the netCDF format using ...
 
