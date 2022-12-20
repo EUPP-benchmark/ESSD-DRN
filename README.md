@@ -27,7 +27,7 @@ The DRN approach proposed by Rasp and Lerch (2018)[^fn1] is a neural network (NN
 |`station_id`| Identification number of weather stations in the dataset|
 |*`model_land_usage`*| Land usage of the model grid point|
 |*`station_land_usage`*| Land usage of the weather station|
-|**`land_usage`**| Summarized land usage information combining both *model_land_usage* and *station_land_usage*, using a mapping from the 2D vector (*model_land_usage*, *station_land_usage*) to the 1D scalar *land_usage*|
+|**`land_usage`**| Summarized land usage information combining both *`model_land_usage`* and *`station_land_usage`*, using a mapping from the 2D vector (*`model_land_usage`*, *`station_land_usage`*) to the 1D scalar *`land_usage`*|
 
 Our NN model is built upon the Keras[^fn2] framework in Python, and the detailed hyper-parameter choices are described as follows:
 
