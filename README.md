@@ -53,7 +53,7 @@ In order to run our DRN scripts on the ESSD benchmark dataset we had to adapt th
 
 The DRN model can be run by executing the `DRN_pp.py` script in the home directory. Note that file paths have to be changed accordingly.
 
-The output of the NN models are the parameters of a Gaussian distribution. The scripts in the `/output-process/` folder are used to obtain the final predictions in the required format. `output_process.py` adapts the format of the predictions to prepare for the following steps: First,`generate_fcst.R` generates samples from the distribution as the post-processed ensemble forecasts for each lead time in the form of 51 equi-distant quantiles. Then, `combine_fcst.R` combines the post-processed forecasts for all lead times.
+The output of the NN models are the parameters of a Gaussian distribution. The scripts in the `/output-process/` folder are used to obtain the final predictions in the required format. `output_process.py` adapts the format of the predictions to prepare for the following steps: First, `generate_fcst.R` generates samples from the distribution as the post-processed ensemble forecasts for each lead time in the form of 51 equi-distant quantiles. Then, `combine_fcst.R` combines the post-processed forecasts for all lead times.
 
 The predictions are transformed to the required `netCDF` format and relevant meta-data is added in `feather_to_netCDF.ipynb`.
 
