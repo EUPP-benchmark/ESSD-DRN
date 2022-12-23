@@ -1,6 +1,12 @@
 # ESSD-DRN
 
-This repository provides Python code for implementation of the distributional regression network (DRN) post-processing method, accompanying the EUPPBench post-processing benchmark dataset v1.0.
+This repository provides Python code for the implementation of the distributional regression network (DRN) post-processing method, accompanying the ESSD benchmark. Provide the DRN output file (see the method's details below).
+
+This code is provided as supplementary material with:
+
+    ...: The EUPPBench postprocessing benchmark dataset v1.0, ...
+
+**Please cite this article if you use (a part of) this code for a publication.**
 
 # Details on the DRN setup
 
