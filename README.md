@@ -65,5 +65,5 @@ The predictions are transformed to the required `netCDF` format and relevant met
 
 # Computational performance indication
 
-The computation was done with 40 CPUs (Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz) with 236 Gb of RAM. Training the 21 DRN models in the setup described above for all lead times takes approximately 2 hours in total.
+The computation was done with 45 CPUs (Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz) with 236 Gb of RAM. Training the 21 DRN models in the setup described above for all lead times takes approximately 2 hours in total.
 
