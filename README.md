@@ -4,7 +4,7 @@ This repository provides Python code for the implementation of the distributiona
 
 This code is provided as supplementary material with:
 
- * ...: The EUPPBench postprocessing benchmark dataset v1.0, ...
+ * Demaeyer, J., Bhend, J., Lerch, S., Primo, C., Van Schaeybroeck, B., Atencia, A., Ben Bouallègue, Z., Chen, J., Dabernig, M., Evans, G., Faganeli Pucer, J., Hooper, B., Horat, N., Jobst, D., Merše, J., Mlakar, P., Möller, A., Mestre, O., Taillardat, M., and Vannitsem, S.: The EUPPBench postprocessing benchmark dataset v1.0, Earth Syst. Sci. Data Discuss. [preprint], https://doi.org/10.5194/essd-2022-465, in review, 2023.
 
 **Please cite this article if you use (a part of) this code for a publication.**
 
