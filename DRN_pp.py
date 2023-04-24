@@ -8,14 +8,14 @@ from model.crps_function import crps_cost_function, crps_normal
 
 
 f = open('./model_training.txt','w') # or None
-
+feather_path = './data-feather/'
 
 def main():
     
     for n_leadtime in range(21):
         
-        train_data, test_data = get_fcst_data_leadtime(path='/Data/eumetnet/eumetnet_temp/new/', leadtime=n_leadtime)
-        model_orog = get_orog_data(path='/home/chen_jieyu/eumetnet/model_orog.csv')
+        train_data, test_data = get_fcst_data_leadtime(path=feather_path, leadtime=n_leadtime)
+        model_orog = get_orog_data(path='./implementation-data/model_orog.csv')
         
         train_features_raw, train_targets, train_IDs, train_lu, train_info = preprocess_data_train(train_data, model_orog)
         test_features_raw, test_targets, test_IDs, test_lu, test_info, leadtime = preprocess_data_test(test_data, model_orog)
@@ -76,7 +76,7 @@ def main():
         train_combine = train_combine.rename(columns={0: 't2m_mean', 1: 't2m_std'})
         test_combine = test_combine.rename(columns={0: 't2m_mean', 1: 't2m_std'})
         
-        fcst_data_leadtime_path = '/Data/eumetnet/eumetnet_temp/new/'
+        fcst_data_leadtime_path = feather_path 
         train_combine.reset_index().to_feather(fcst_data_leadtime_path + 'orog_repred_leadtime' + str(n_leadtime) + '.feather')
         test_combine.reset_index().to_feather(fcst_data_leadtime_path + 'orog_pred_leadtime' + str(n_leadtime) + '.feather')
         
