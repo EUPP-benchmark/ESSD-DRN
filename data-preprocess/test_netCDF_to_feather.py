@@ -8,7 +8,7 @@ import pandas as pd
 import pyarrow
 
 data_path ='../EUPPdata/'
-out_data_path='../data/'
+out_data_path='../data-feather/'
 
 fcs_test = xr.open_dataarray(f'{data_path}ESSD_benchmark_test_data_forecasts.nc')
 obs_test = xr.open_dataarray(f'{data_path}ESSD_benchmark_test_data_observations.nc')
