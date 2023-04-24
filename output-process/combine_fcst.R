@@ -1,7 +1,7 @@
 library(feather)
 
 # specify path
-new_path
+new_path = '../data-feather/'
 
 pred_all = read_feather(paste0(new_path, "fcst_leadtime0.feather"))
 
