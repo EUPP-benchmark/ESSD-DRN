@@ -35,9 +35,6 @@ def drn_pp(model, data, loss_fn, early_stopping, lr=0.005, n_epoch=50, bs=4096, 
     test_lu = data[6]
     test_targets = data[7]
     
-    tf.compat.v1.reset_default_graph()
-    keras.backend.clear_session()
-    
     start_train = time.time()
     opt = keras.optimizers.Adam(learning_rate=lr) # or lr=0.002
     model.compile(optimizer=opt, loss=loss_fn)
