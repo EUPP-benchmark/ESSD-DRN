@@ -41,15 +41,28 @@ def main():
         trn_times = []
         test_times = []
         
-        model = drn(n_features, max_id, emb_size_id, max_lu, emb_size_lu)
         data = [train_features, train_IDs, train_lu, train_targets, test_features, test_IDs, test_lu, test_targets]
         loss_fn = crps_cost_function
-        early_stopping = tf.keras.callbacks.EarlyStopping(monitor = 'loss', min_delta = 0.005, patience = 2, restore_best_weights = True)
         
         # training multiple models in a loop
         for i in range(nreps):
             print(f'Repetition {i}')
             
+            # Clear the backend session BEFORE building a new model
+            tf.keras.backend.clear_session()
+            
+            # Instantiate a completely fresh model for each repetition
+            model = drn(n_features, max_id, emb_size_id, max_lu, emb_size_lu)
+            
+            # Recreate callback to avoid state leakage from previous early stopping
+            early_stopping = tf.keras.callbacks.EarlyStopping(
+                monitor='loss', 
+                min_delta=0.005, 
+                patience=2, 
+                restore_best_weights=True
+            )
+            
+            # Train and predict
             training_time, predicting_time, reprediction, prediction, training_score, test_score = drn_pp(model, data, loss_fn, early_stopping)
             
             trn_scores.append(training_score)
